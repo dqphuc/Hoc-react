@@ -60,38 +60,37 @@ const AddUserInfor = (props) => {
   //   age: "",
   // };
 
-const [name, setName ] = useState('');
-const [address, setAddress ] = useState('Hoi dan IT');
-const [age, setAge ] = useState('');
- const handleOnChangeInput = (event) => {
-   setName(event.target.value);
-   
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("Hoi dan IT");
+  const [age, setAge] = useState("");
+  const handleOnChangeInput = (event) => {
+    setName(event.target.value);
+
     // this.setState({
     //   name: event.target.value,
     // });
   };
 
- const handleOnChangeAge = (event) => {
-  setAge(event.target.value);
-   
+  const handleOnChangeAge = (event) => {
+    setAge(event.target.value);
+  };
   //   this.setState({
   //     age: event.target.value,
   //   });
-  };
+  // };
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-props.handleAddNewUser({
-        id: Math.floor(Math.random() * 100 + 1) + "random",
-        name: name,
-        age: age,
-      });
-    }
+    props.handleAddNewUser({
+      id: Math.floor(Math.random() * 100 + 1) + "random",
+      name: name,
+      age: age,
+    });
+  };
   return (
     <div>
       {" "}
-      My name is {this.state.name} I'm from {address} I'm{" "}
-      {age} year old
+      My name is {name} I'm from {address} I'm {age} year old
       <form onSubmit={(event) => handleOnSubmit(event)}>
         <label>Your name: </label>
         <input
