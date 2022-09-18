@@ -11,9 +11,33 @@ body {
 
 .app-container {
   .header-container{
-    .navbar-nav{
+    .btn-login {
+      border-radius: 5px;
+      margin-right: 15px;
+      padding: 0 15px;
+      height: 40px;
+      border: 1px solid #535353;
+    }
+
+    .btn-signup {
+      border-radius: 5px;
+      color: white;
+      padding: 0 15px;
+      background: #303030;
+      height: 40px;
+      &:hover{
+        background: black;
+      }
+    }
+
+    @media (min-width: 1576px){.container, .container-lg, .container-sm, .container-xl {
+      max-width: 1500px !important}
+     
+        }
+    .navbar{
       z-index: 10;
-      opacity: 0.6;
+      background-color: rgba(0, 0, 0, 0) !important;
+      padding-top: 20px;
       .nav-link{
         &.active{
           color: #000bff;
@@ -21,18 +45,41 @@ body {
       }
 
     }
-    .navbar-brand {
-      z-index: 10;
-      opacity: 0.6;
-
-    }
-    
-    
-    
-    // .navbar-nav .nav-link.active{
-    //   color: red;
-    // }
   }
+  .homepage-container {
+    .homepage-content {
+      padding: 100px;
+      position: relative;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      .title-1{
+        font-size: 40px;
+        font-weight: 600;
+      }
+      .title-2{
+        font-size: 25px;
+        
+      }
+      .title-3{
+
+        font-size: 20px;
+        button{
+          border-radius: 5px;
+        color: white;
+        padding: 0 15px;
+        background: #303030;
+        height: 40px;
+        &:hover{
+        background: black;
+      }
+        }
+    
+      }
+  }}
+  
 }
 video{
   position: fixed;
