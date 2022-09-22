@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
 import axios from "axios";
+
 const ModalCreateUser = (props) => {
   const { show, setShow } = props;
 
@@ -34,20 +35,20 @@ const ModalCreateUser = (props) => {
   };
 
   const handleSubmitCreateUser = async () => {
-    //validate: kiem siat nhap
+    //validate
 
     //call apis
     // let data = {
-    //   emai: email,
+    //   email: email,
     //   password: password,
     //   username: username,
     //   role: role,
-    //   userImage: image,
-    // };
-    // console.log(data);
+    //   userImage: image
+    // }
+    // console.log(data)
 
     const data = new FormData();
-    data.append("emai", email);
+    data.append("email", email);
     data.append("password", password);
     data.append("username", username);
     data.append("role", role);
@@ -57,15 +58,11 @@ const ModalCreateUser = (props) => {
       "http://localhost:8081/api/v1/participant",
       data
     );
-    //console.log(">>>>>> check res", res);
+    console.log(">>>>>>> check res", res);
   };
 
   return (
     <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
-
       <Modal
         show={show}
         onHide={handleClose}
