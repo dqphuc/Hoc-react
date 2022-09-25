@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
 import { toast } from "react-toastify";
-import { postCreateNewUser } from "../../../services/apiService";
+import { putUpdateUser } from "../../../services/apiService";
 import _ from 'lodash';
 
 const ModalUpdateUser = (props) => {
@@ -18,6 +18,7 @@ const ModalUpdateUser = (props) => {
     setRole("USER");
     setImage("");
     setPreviewImage("");
+    props.resetUpdateData();
   };
 
   const [email, setEmail] = useState("");
@@ -42,7 +43,7 @@ const ModalUpdateUser = (props) => {
        
     }
 
-  }, [props.dataUpdate]);
+  }, [dataUpdate]);
 
   const handleUploadImage = (event) => {
     if (event.target && event.target.files && event.target.files[0]) {
@@ -53,28 +54,33 @@ const ModalUpdateUser = (props) => {
     }
   };
 
-  const validateEmail = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
+  // const validateEmail = (email) => {
+  //   return String(email)
+  //     .toLowerCase()
+  //     .match(
+  //       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  //     );
+  // };
 
   const handleSubmitCreateUser = async () => {
-    if (!password) {
-      toast.error("invalid password");
-      return;
-    }
+    // const isValidEmail = validateEmail(email);
+    // if (!isValidEmail) {
+    //   toast.error("invalid email");
+    //   return;
+    // }
+
+  //   if (!password) {
+  //     toast.error("invalid password");
+  //     return;
+  //   }
 
     // submit data
 
-    let data = await postCreateNewUser(email, password, username, role, image);
-    console.log("component respone: ", data);
-    if (data && data.EC === 0) {
+    let data = await putUpdateUser(dataUpdate.id, username, role, image);
+      if (data && data.EC === 0) {
       toast.success(data.EM);
       handleClose();
-      await props. fetchListUsers()
+      await props.fetchListUsers()
     }
     if (data && data.EC !== 0) {
       toast.error(data.EM);
